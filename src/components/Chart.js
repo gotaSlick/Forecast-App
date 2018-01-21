@@ -1,5 +1,5 @@
 // This component is the child component of WeatherList container. 
-// It will get its data from its parent through props. 
+// It gets its data from its parent through props. 
 import _ from 'lodash';
 import React from 'react';
 import { Sparklines, SparklinesLine, SparklinesReferenceLine } from 'react-sparklines';
