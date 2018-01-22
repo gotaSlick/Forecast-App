@@ -5,9 +5,9 @@ import GoogleMap from '../components/GoogleMap';
 
 class WeatherList extends Component {
 
-    //this function is for rendering a single city (a singe row):
+    //function for rendering a single city (a singe row):
     renderWeather(cityData) {
-        const name = cityData.city.name; //make the code dryer. 
+        const name = cityData.city.name;
         //assigning names for wished data:
         const temps = _.map(cityData.list.map(weather => weather.main.temp), (temp) => temp - 273); 
         // _.map  (temp)=> temp -273 for Celcius conversion
@@ -15,7 +15,7 @@ class WeatherList extends Component {
         const humidities = cityData.list.map(weather => weather.main.humidity);
         const { lon, lat } = cityData.city.coord;
         return (// to fix the key error Each child in an array or iterator should have a unique "key", add a unique key
-        //to the top element of the list (Rule of adding key to React list):  (in my case city's name is unique, so why not)
+        //to the top element of the list (Rule of adding key to React list):
             <tr key={name}>
                 <td>{name}<br/><GoogleMap lon={lon} lat={lat} /></td>
                 <td><Chart data={temps} color="blue" units="C" /></td>
@@ -45,7 +45,7 @@ class WeatherList extends Component {
 }
 
 function mapStateToProps({ weather }) {
-    return { weather }; //comes from reducers/index.js, where we assigned the WeatherReducer to the weather key.
+    return { weather }; //comes from reducers/index.js, where the WeatherReducer is assigned to the weather key.
 }
 
 export default connect(mapStateToProps)(WeatherList);
